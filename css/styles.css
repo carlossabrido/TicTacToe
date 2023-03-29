@@ -4,12 +4,9 @@ html,body{
     margin: 0;
     background-color: rgb(16, 16, 16);
 }
-
-
 .flex{
     display: flex;
 }
-
 .none{
     display: none;
 }
@@ -21,14 +18,10 @@ html,body{
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
-
 .center{
-    justify-content: center;
-    
+    justify-content: center;   
 }
-
 .start{
     width: 30%;
     height: 30%;
@@ -37,22 +30,35 @@ html,body{
     justify-content: center;
     align-items: center;
 }
-
 .red{
     background-color: brown;  
 }
-
 .yellow{
     background-color: rgba(255, 255, 0, 0.352);
 }
-
-.end{
-    
+.end{ 
     height: 2em;
     background-color: rgba(255, 255, 0, 0.352);
-
 }
 
 .filling{
     height: 4em;
+}
+
+.bot{
+    height: 2em;
+    background-color: rgba(255, 255, 0, 0.352) ;
+}
+.winner{
+    height: 30em;
+    background-color:  rgba(255, 255, 0, 0.352);
+    width:10em ;
+}
+
+.new{
+    height: 3em;
+    background-color: rgba(255, 255, 0, 0.352) ;
+}
+.ceil{
+    height: 5em;
 }
