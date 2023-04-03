@@ -6,15 +6,27 @@ const swap = (id) => {
     view[i].classList.add("none");
   }
   pageShow.classList.remove("none");
-
-  if(id== 'pantalla1'){
-    if(nplayer1 == "" && nplayer2 == ""){
-      alert('oisaha')
-    }
   }
 
+  // conseguir nombres
+
+const formulario = () => {
+  const nplayer1 = document.getElementById("player1").value; 
+  const nplayer2 = document.getElementById("player2").value;
   
+  if (nplayer1 == "" && nplayer2 == "") {
+     document.getElementById("btn").disabled = true;
+    
+  } else {
+    document.getElementById("btn").disabled = false;
+  }
+
+  place1 = document.getElementById("host1").innerHTML = nplayer1
+  place2 = document.getElementById("host2").innerHTML = nplayer2;
 };
+
+  
+;
 
 let jugada = [
   [1, 1, 1],
@@ -52,21 +64,25 @@ const comprobarPosicionGanadora = (tablero) => {
   return null;
 };
 
-// conseguir nombres
 
-const formulario = () => {
-  const nplayer1 = document.getElementById("player1").value; 
-  const nplayer2 = document.getElementById("player2").value;
-  
-  if (nplayer1 == "" && nplayer2 == "") {
-     document.getElementById("btn").disabled = true;
-    
-  } else {
-    document.getElementById("btn").disabled = false;
+const  movement= ()=>{
+  let firstMovement= 'X'
+  let secondMovement='O'
+
+  if(document.getElementById('box')==""){
+    document.getElementById('box').innerHTML=firstMovement
+
   }
 
-  place1 = document.getElementById("host1").innerHTML = nplayer1
-  place2 = document.getElementById("host2").innerHTML = nplayer2;
-};
+
+
+}
+
+
+
+
+
+
+
 
 
