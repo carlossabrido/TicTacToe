@@ -1,15 +1,3 @@
-// const show = (screen) => {
-//     if (screen == "pantalla1") {
-//       // si a la pantalla a la que voy es la  1  le quite el none a la pantalla 1 el none y se lo pone 2
-//       document.querySelector("#pantalla1").classList.remove("none");
-//       document.querySelector("#pantalla2").classList.add("none");
-  
-//     } else {
-//       document.querySelector("#pantalla2").classList.remove("none");
-//       document.querySelector("#pantalla1").classList.add("none");
-//     }
-//   };
-
 
 const swap=(id)=>{
   let view = document.querySelectorAll('.view')
@@ -47,7 +35,7 @@ const fichas =(tablero)=>{
   for(let i=0;i<tablero.length;i++){
     for(let j=0; i<tablero.length;i++){
       if(tablero[i]==tablero[j])
-      return false
+      return true
     }
   }
    
@@ -55,5 +43,30 @@ const fichas =(tablero)=>{
 console.log(fichas(jugada))
 
 
+// conseguir nombres 
 
+const names= ()=>{
+  const nombreJugador2= document.getElementById('jugador-2-nombre').value;
+  if(nombreJugador2==""){
+    alert('nombre no insertado')
+    document.getElementById('add1').focus();
+  }
+  console.log(nombreJugador2)
+
+}
+
+
+// const names2=()=>{
+//   const btn1= document.getElementById('add1');
+//   if(btn1!==0){
+//     const destiny= document.getElementById('reception').innerText(btn1)
+//   }console.log(destiny)
+// }
+
+
+
+// const names3 = ()=>{
+//   const btn1= document.getElementById('add1').value;
+//   const nameee=document.getElementById('reception').innerHTML(btn1)
+// }
 

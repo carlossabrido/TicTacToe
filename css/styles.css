@@ -19,6 +19,13 @@ html,body{
     justify-content: center;
     align-items: center;
 }
+
+.user{
+    height: 10%;
+    background-color: aqua;
+    display: flex;
+    
+}
 .center{
     justify-content: center;   
 }
@@ -29,6 +36,7 @@ html,body{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 1em;
 }
 .red{
     background-color: brown;  
@@ -62,3 +70,4 @@ html,body{
 .ceil{
     height: 5em;
 }
+
