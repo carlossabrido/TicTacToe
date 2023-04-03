@@ -1,3 +1,11 @@
+
+// constantes 
+let firstChip = "X";
+let secondChip = "O";
+
+
+
+
 const swap = (id) => {
   let view = document.querySelectorAll(".view");
   let pageShow = document.getElementById(id);
@@ -6,27 +14,23 @@ const swap = (id) => {
     view[i].classList.add("none");
   }
   pageShow.classList.remove("none");
-  }
+};
 
-  // conseguir nombres
+// conseguir nombres
 
-const formulario = () => {
-  const nplayer1 = document.getElementById("player1").value; 
+const playerNames = () => {
+  const nplayer1 = document.getElementById("player1").value;
   const nplayer2 = document.getElementById("player2").value;
-  
+
   if (nplayer1 == "" && nplayer2 == "") {
-     document.getElementById("btn").disabled = true;
-    
+    document.getElementById("btn").disabled = true;
   } else {
     document.getElementById("btn").disabled = false;
   }
 
-  place1 = document.getElementById("host1").innerHTML = nplayer1
+  place1 = document.getElementById("host1").innerHTML = nplayer1;
   place2 = document.getElementById("host2").innerHTML = nplayer2;
 };
-
-  
-;
 
 let jugada = [
   [1, 1, 1],
@@ -64,25 +68,10 @@ const comprobarPosicionGanadora = (tablero) => {
   return null;
 };
 
+const movement = () => {
+ 
 
-const  movement= ()=>{
-  let firstMovement= 'X'
-  let secondMovement='O'
-
-  if(document.getElementById('box')==""){
-    document.getElementById('box').innerHTML=firstMovement
-
+  if (document.getElementById("box") == "") {
+    document.getElementById("box").innerHTML = firstMovement;
   }
-
-
-
-}
-
-
-
-
-
-
-
-
-
+};
