@@ -67,9 +67,9 @@ const comprobarPosicionGanadora = (tablero) => {
 
 const movement = () => {
   let chip1 = "X";
-  let cells = document.querySelectorAll(".box").value;
+  let cells = document.querySelectorAll(".box");
   console.log(cells);
-
-  cells.innertext = chip1;
+  cells.forEach((element) => {
+    element.innerHTML = chip1;
+  });
 };
-
