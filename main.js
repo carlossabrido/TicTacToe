@@ -65,11 +65,14 @@ const comprobarPosicionGanadora = (tablero) => {
   return null;
 };
 
-const movement = () => {
-  let chip1 = "X";
-  let cells = document.querySelectorAll(".box");
-  console.log(cells);
-  cells.forEach((element) => {
-    element.innerHTML = chip1;
-  });
+
+let currentPlayer= "X";
+const movement = (id) => {
+ const probar= document.querySelector(id) 
+ if(probar!==3){ 
+probar.innerHTML=currentPlayer
+currentPlayer = currentPlayer =="X"?"O": "X" 
+
+ } 
 };
+
