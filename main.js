@@ -1,10 +1,6 @@
-
-// constantes 
-let firstChip = "X";
-let secondChip = "O";
-
-
-
+// constantes
+let chip1 = "X";
+let Chip2 = "O";
 
 const swap = (id) => {
   let view = document.querySelectorAll(".view");
@@ -20,6 +16,7 @@ const swap = (id) => {
 
 const playerNames = () => {
   const nplayer1 = document.getElementById("player1").value;
+  console.log(nplayer1);
   const nplayer2 = document.getElementById("player2").value;
 
   if (nplayer1 == "" && nplayer2 == "") {
@@ -32,10 +29,10 @@ const playerNames = () => {
   place2 = document.getElementById("host2").innerHTML = nplayer2;
 };
 
-let jugada = [
-  [1, 1, 1],
-  [2, 1, 2],
-  [0, 2, 0],
+const jugada = [
+  [1, 2, 0],
+  [1, 2, 1],
+  [0, 1, 1],
 ];
 
 const comprobarPosicionGanadora = (tablero) => {
@@ -69,9 +66,10 @@ const comprobarPosicionGanadora = (tablero) => {
 };
 
 const movement = () => {
- 
+  let chip1 = "X";
+  let cells = document.querySelectorAll(".box").value;
+  console.log(cells);
 
-  if (document.getElementById("box") == "") {
-    document.getElementById("box").innerHTML = firstMovement;
-  }
+  cells.innertext = chip1;
 };
+
