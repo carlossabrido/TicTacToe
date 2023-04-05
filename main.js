@@ -1,6 +1,6 @@
 // constantes
-let chip1 = "X";
-let Chip2 = "O";
+ let currentPlayer = "X";
+
 
 const swap = (id) => {
   let view = document.querySelectorAll(".view");
@@ -28,12 +28,6 @@ const playerNames = () => {
   place1 = document.getElementById("host1").innerHTML = nplayer1;
   place2 = document.getElementById("host2").innerHTML = nplayer2;
 };
-
-const jugada = [
-  [1, 2, 0],
-  [1, 2, 1],
-  [0, 1, 1],
-];
 
 const comprobarPosicionGanadora = (tablero) => {
   for (let i = 0; i < tablero.length; i++) {
@@ -65,14 +59,34 @@ const comprobarPosicionGanadora = (tablero) => {
   return null;
 };
 
+// const movement = (id) => {
+//   const chipMovement = document.querySelector(id);
+//   chipMovement.innerHTML = currentPlayer;
+//   currentPlayer = currentPlayer == "X" ? "O" : "X";
+//   console.log(currentPlayer)
+// };
 
-let currentPlayer= "X";
+// ficha repetida
+
+const table = [
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""],
+];
+
 const movement = (id) => {
- const probar= document.querySelector(id) 
- if(probar!==3){ 
-probar.innerHTML=currentPlayer
-currentPlayer = currentPlayer =="X"?"O": "X" 
-
- } 
+  const chipMovement = document.querySelector(id);
+  console.log(chipMovement)
+  for (let i = 0; i < table.length; i++) {
+    console.log(table.length)
+    if (table[i] !== "") {
+      console.log(table[i])
+      chipMovement.innerHTML = currentPlayer;
+      console.log(currentPlayer)
+      currentPlayer == "X" ? (currentPlayer = "O") : (currentPlayer = "X");
+      console.log(currentPlayer)
+    }
+  }
 };
+
 
