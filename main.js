@@ -70,37 +70,54 @@ const comprobarPosicionGanadora = (tablero) => {
 
 const movement = (id) => {
   const chipMovement = document.querySelector(id);
-  turn();
-  for (let i = 0; i < table.length; i++) {
-    console.log(table[i]);
-    if (chipMovement.innerHTML == "") {
+  let infoplayer = infoturn();
+  console.log(infoplayer);
+  if (infoplayer > 0) {
+    if (
+      chipMovement.innerHTML == "" &&
+      chipMovement.innerHTML !== currentPlayer
+    ) {
       chipMovement.innerHTML = currentPlayer;
-      currentPlayer == "X" ? (currentPlayer = "O") : (currentPlayer = "X");
+      turn();
+    }
+    currentPlayer == "X" ? (currentPlayer = "O") : (currentPlayer = "X");
+  } else {
+    if (
+      chipMovement.innerHTML !== "" &&
+      chipMovement.innerHTML == currentPlayer
+    ) {
+      chipMovement.innerHTML = "";
+      turn();
     }
   }
 };
 
 // turnos
-let player1 = 0;
-let player2 = 0;
-const turn = (id) => {
-  const chipMovement = document.querySelector(id);
+let player1turn = 3;
+let player2turn = 3;
+const turn = () => {
   if (currentPlayer == "X") {
-    console.log(player1);
-    if (player1 >= 3) {
-      console.log("son3");
-      chipMovement.innerHTML = "";
-      // no dejar poner mas ficas
+    if (player1turn > 0) {
+      player1turn--;
+    } else {
+      player1turn++;
     }
-    player1++;
   }
   if (currentPlayer == "O") {
-    console.log(player2);
-    if (player2 >= 3) {
-      console.log("son3");
-      chipMovement.innerHTML = "";
-      // no djar poner mas
+    if (player2turn > 0) {
+      player2turn--;
+    } else {
+      player2turn++;
     }
-    player2++;
+  }
+};
+
+// dime los turnos
+
+const infoturn = () => {
+  if (currentPlayer == "X") {
+    return player1turn;
+  } else {
+    return player2turn;
   }
 };
