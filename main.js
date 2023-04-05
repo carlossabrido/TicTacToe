@@ -1,6 +1,5 @@
 // constantes
- let currentPlayer = "X";
-
+let currentPlayer = "X";
 
 const swap = (id) => {
   let view = document.querySelectorAll(".view");
@@ -76,15 +75,11 @@ const table = [
 
 const movement = (id) => {
   const chipMovement = document.querySelector(id);
-  console.log(chipMovement)
   for (let i = 0; i < table.length; i++) {
-    console.log(table.length)
-    if (table[i] !== "") {
-      console.log(table[i])
+    console.log(table[i]);
+    if (chipMovement.innerHTML == "") {
       chipMovement.innerHTML = currentPlayer;
-      console.log(currentPlayer)
       currentPlayer == "X" ? (currentPlayer = "O") : (currentPlayer = "X");
-      console.log(currentPlayer)
     }
   }
 };
