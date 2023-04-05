@@ -1,6 +1,14 @@
 // constantes
 let currentPlayer = "X";
 
+const table = [
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""],
+];
+
+// cambiar de pantalla
+
 const swap = (id) => {
   let view = document.querySelectorAll(".view");
   let pageShow = document.getElementById(id);
@@ -58,23 +66,11 @@ const comprobarPosicionGanadora = (tablero) => {
   return null;
 };
 
-// const movement = (id) => {
-//   const chipMovement = document.querySelector(id);
-//   chipMovement.innerHTML = currentPlayer;
-//   currentPlayer = currentPlayer == "X" ? "O" : "X";
-//   console.log(currentPlayer)
-// };
-
-// ficha repetida
-
-const table = [
-  ["", "", ""],
-  ["", "", ""],
-  ["", "", ""],
-];
+// poner y bloquear ficha
 
 const movement = (id) => {
   const chipMovement = document.querySelector(id);
+  turn();
   for (let i = 0; i < table.length; i++) {
     console.log(table[i]);
     if (chipMovement.innerHTML == "") {
@@ -84,4 +80,27 @@ const movement = (id) => {
   }
 };
 
-
+// turnos
+let player1 = 0;
+let player2 = 0;
+const turn = (id) => {
+  const chipMovement = document.querySelector(id);
+  if (currentPlayer == "X") {
+    console.log(player1);
+    if (player1 >= 3) {
+      console.log("son3");
+      chipMovement.innerHTML = "";
+      // no dejar poner mas ficas
+    }
+    player1++;
+  }
+  if (currentPlayer == "O") {
+    console.log(player2);
+    if (player2 >= 3) {
+      console.log("son3");
+      chipMovement.innerHTML = "";
+      // no djar poner mas
+    }
+    player2++;
+  }
+};
