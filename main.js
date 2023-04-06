@@ -1,7 +1,7 @@
 // constantes
 let currentPlayer = "X";
 
-const table = [
+const tablero = [
   ["", "", ""],
   ["", "", ""],
   ["", "", ""],
@@ -36,48 +36,59 @@ const playerNames = () => {
   place2 = document.getElementById("host2").innerHTML = nplayer2;
 };
 
-const comprobarPosicionGanadora = (tablero) => {
+const comprobarPosicionGanadora = () => {
   for (let i = 0; i < tablero.length; i++) {
     if (
       tablero[i][0] &&
       tablero[i][0] === tablero[i][1] &&
       tablero[i][0] === tablero[i][2]
-    )
-      return tablero[i][0]; // horizontales
+    ) 
+      return( tablero[i[0]])
+       // horizontales
     if (
       tablero[0][i] &&
       tablero[0][i] === tablero[1][i] &&
       tablero[0][i] === tablero[2][i]
     )
-      return tablero[0][i]; // verticales
+      return tablero[0][i];
+       // verticales
   }
   if (
     tablero[0][0] &&
     tablero[0][0] === tablero[1][1] &&
     tablero[0][0] === tablero[2][2]
   )
-    return tablero[0][0]; // diagonal
+    return tablero[0][0];
+    // diagonal
   if (
     tablero[0][2] &&
     tablero[0][2] === tablero[1][1] &&
     tablero[0][2] === tablero[2][0]
   )
     return tablero[0][2]; // la otra diagonal
+  
   return null;
 };
 
+
+
 // poner y bloquear ficha
 
-const movement = (id) => {
+const movement = (id,row,colum) => {
   const chipMovement = document.querySelector(id);
   let infoplayer = infoturn();
-  console.log(infoplayer);
   if (infoplayer > 0) {
     if (
       chipMovement.innerHTML == "" &&
       chipMovement.innerHTML !== currentPlayer
     ) {
+
       chipMovement.innerHTML = currentPlayer;
+      tablero[row][colum]=currentPlayer
+      if(comprobarPosicionGanadora()==true){
+        alert('dfd')
+      }
+      
       turn();
     }
     currentPlayer == "X" ? (currentPlayer = "O") : (currentPlayer = "X");
@@ -90,12 +101,14 @@ const movement = (id) => {
       turn();
     }
   }
+ 
 };
 
 // turnos
 let player1turn = 3;
 let player2turn = 3;
 const turn = () => {
+  
   if (currentPlayer == "X") {
     if (player1turn > 0) {
       player1turn--;
@@ -110,6 +123,7 @@ const turn = () => {
       player2turn++;
     }
   }
+  count()
 };
 
 // dime los turnos
@@ -121,3 +135,14 @@ const infoturn = () => {
     return player2turn;
   }
 };
+
+
+const count = () => {
+  document.getElementById("count1").innerHTML =player1turn
+  document.getElementById("count2").innerHTML =player2turn
+ 
+};
+
+
+
+  

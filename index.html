@@ -10,54 +10,66 @@
       rel="stylesheet"
       integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
       crossorigin="anonymous"
-    />
+      
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <div class="container-fluid none  view" id="pantalla1">
+    <div class="container-fluid  view" id="pantalla1">
       <div class="row header"></div>
       <div class="row screen justify-content-center">
-        <div class="col-6 red first-box">
+        <div class="col-3 red m-1 first-box direction justify-content-center" >Player vs Player
           <div class="start" >
-            <input type="text" id="player1" placeholder="uno"  onchange="playerNames()" />
+            <input type="text" class="place m-1" id="player1" placeholder="player uno"  onchange="playerNames()" />
+            <input type="text" class="place m-1" id="player2" placeholder="player dos" onchange="playerNames()"/>
           </div>
+          <div class="col-1">
+            <button id="btn" disabled onclick="swap('pantalla4')"></button>
+          </div>
+        </div>
+        <div class="col-3 red m-1 first-box direction justify-content-center" > Player vs CPU
           <div class="start" >
-            <input type="text" id="player2" placeholder="dos" onchange="playerNames()" />
+            <input type="text" class="place m-2" id="player1" placeholder="uno"  onchange="playerNames()" />
+            maquina
           </div>
-          <!-- <div class="start" id="machine">
-            <input type="text" placeholder="nombre usuario" />
-          </div> -->
+          <div class="col-1">
+            <button id="btn" disabled onclick="swap('pantalla4')"></button>
+          </div>
         </div>
       </div>
-      <div class="row justify-content-center">
-        <div class="col-1">
-          <button id="btn" disabled onclick="swap('pantalla4')"></button>
-        </div>
-      </div>
+      
     </div>
 
-    <div class="container-fluid  view" id="pantalla4">
+    <div class="container-fluid none view" id="pantalla4">
       <div class="row filling "></div>
-      <div class="row header justify-content-center">
-        <div class="col-2 m-1 player" id="host1" onclick="">
+      <div class="row header justify-content-center hola">
+        <div class="col-1 m-1 player" id="host1" onclick="">
         <h1></h1></div>
 
-        <div class="col-2 m-1 yellow" id="box1" onclick="movement('#box1')"></div>
-        <div class="col-2 m-1 yellow" id="box2" onclick="movement('#box2')"></div>
-        <div class="col-2 m-1 yellow" id="box3" onclick="movement('#box3')"></div>
+        <div class="col-1 m-1 yellow" id="box1" onclick="movement('#box1',0,0)"></div>
+        <div class="col-1 m-1 yellow" id="box2" onclick="movement('#box2',0,1)"></div>
+        <div class="col-1 m-1 yellow" id="box3" onclick="movement('#box3',0,2)"></div>
 
-        <div class="col-2 m-1 player" id="host2" onclick="">
+        <div class="col-1 m-1 player" id="host2" onclick="">
         </div>
       </div>
-      <div class="row header justify-content-center">
-        <div class="col-2 m-1 yellow" id="box4"  onclick="movement('#box4')"></div>
-        <div class="col-2 m-1 yellow" id="box5"  onclick="movement('#box5')"></div>
-        <div class="col-2 m-1 yellow" id="box6"  onclick="movement('#box6')"></div>
+      <div class="row header justify-content-center hola">
+        <div class="col-1 m-1 yellow" id="box4"  onclick="movement('#box4',1,0)"></div>
+        <div class="col-1 m-1 yellow" id="box5"  onclick="movement('#box5',1,1)"></div>
+        <div class="col-1 m-1 yellow" id="box6"  onclick="movement('#box6',1,2)"></div>
       </div>
-      <div class="row header justify-content-center">
-        <div class="col-2 m-1 yellow" id="box7" onclick="movement('#box7')"></div>
-        <div class="col-2 m-1 yellow" id="box8"  onclick="movement('#box8')"></div>
-        <div class="col-2 m-1 yellow" id="box9"  onclick="movement('#box9')"></div>
+      <div class="row header justify-content-center hola  ">
+        <div class="col-1 m-1 yellow" id="box7" onclick="movement('#box7',2,0)"></div>
+        <div class="col-1 m-1 yellow" id="box8"  onclick="movement('#box8',2,1)"></div>
+        <div class="col-1 m-1 yellow" id="box9"  onclick="movement('#box9',2,2)"></div>
+      </div>
+      <div class="row justify-content-center m-1">
+        <div class="col-1 m-1 bot" id="count1"></div>
+        <div class="col-1 m-1 bot" id="ganador"></div>
+        <div class="col-1 m-1 bot" id="count2"></div>
       </div>
       <div class="row justify-content-center">
         <div class="col-1 bot" onclick="swap('pantalla5')"></div>
