@@ -25,8 +25,10 @@ const playerNames = () => {
   const nplayer1 = document.getElementById("player1").value;
   console.log(nplayer1);
   const nplayer2 = document.getElementById("player2").value;
+  const nplayer3= document.getElementById('player3').value
+  const cpu= document.getElementById('machine').value
 
-  if (nplayer1 == "" && nplayer2 == "") {
+  if (nplayer1 == "" && nplayer2 == ""|| nplayer3 =="") {
     document.getElementById("btn").disabled = true;
   } else {
     document.getElementById("btn").disabled = false;
@@ -42,16 +44,16 @@ const comprobarPosicionGanadora = () => {
       tablero[i][0] &&
       tablero[i][0] === tablero[i][1] &&
       tablero[i][0] === tablero[i][2]
-    ) 
-      return( tablero[i[0]])
-       // horizontales
+    )
+      return tablero[i[0]];
+    // horizontales
     if (
       tablero[0][i] &&
       tablero[0][i] === tablero[1][i] &&
       tablero[0][i] === tablero[2][i]
     )
       return tablero[0][i];
-       // verticales
+    // verticales
   }
   if (
     tablero[0][0] &&
@@ -59,56 +61,62 @@ const comprobarPosicionGanadora = () => {
     tablero[0][0] === tablero[2][2]
   )
     return tablero[0][0];
-    // diagonal
+  // diagonal
   if (
     tablero[0][2] &&
     tablero[0][2] === tablero[1][1] &&
     tablero[0][2] === tablero[2][0]
   )
     return tablero[0][2]; // la otra diagonal
-  
+
   return null;
 };
 
+// winner
 
+const winner = () => {
+  if (comprobarPosicionGanadora() == true) {
+    alert("has ganado");
+  }
+};
 
 // poner y bloquear ficha
 
-const movement = (id,row,colum) => {
-  const chipMovement = document.querySelector(id);
-  let infoplayer = infoturn();
-  if (infoplayer > 0) {
-    if (
-      chipMovement.innerHTML == "" &&
-      chipMovement.innerHTML !== currentPlayer
-    ) {
-
-      chipMovement.innerHTML = currentPlayer;
-      tablero[row][colum]=currentPlayer
-      if(comprobarPosicionGanadora()==true){
-        alert('dfd')
-      }
-      
-      turn();
-    }
-    currentPlayer == "X" ? (currentPlayer = "O") : (currentPlayer = "X");
-  } else {
-    if (
-      chipMovement.innerHTML !== "" &&
-      chipMovement.innerHTML == currentPlayer
-    ) {
-      chipMovement.innerHTML = "";
-      turn();
-    }
-  }
- 
-};
+// const movement = (id, row, colum) => {
+//   const chipMovement = document.querySelector(id);
+//   let comp= comprobarPosicionGanadora()
+//   let infoplayer = infoturn();
+//   if (infoplayer > 0) {
+//     if (
+//       chipMovement.innerHTML == "" &&
+//       chipMovement.innerHTML !== currentPlayer
+//     ) {
+//       chipMovement.innerHTML = currentPlayer;
+//       tablero[row][colum] = currentPlayer;
+//       comprobarPosicionGanadora()
+//       if(comp){
+//         alert(`ganador `)
+//       }
+//       ;
+//       turn();
+     
+//     }
+//     currentPlayer == "X" ? (currentPlayer = "O") : (currentPlayer = "X");
+//   } else {
+//     if (
+//       chipMovement.innerHTML !== "" &&
+//       chipMovement.innerHTML == currentPlayer
+//     ) {
+//       chipMovement.innerHTML = "";
+//       turn();
+//     }
+//   }
+// };
 
 // turnos
 let player1turn = 3;
 let player2turn = 3;
 const turn = () => {
-  
   if (currentPlayer == "X") {
     if (player1turn > 0) {
       player1turn--;
@@ -123,12 +131,13 @@ const turn = () => {
       player2turn++;
     }
   }
-  count()
+  count();
 };
 
 // dime los turnos
 
 const infoturn = () => {
+  whois()
   if (currentPlayer == "X") {
     return player1turn;
   } else {
@@ -136,13 +145,57 @@ const infoturn = () => {
   }
 };
 
-
 const count = () => {
-  document.getElementById("count1").innerHTML =player1turn
-  document.getElementById("count2").innerHTML =player2turn
- 
+  document.getElementById("count1").innerHTML = player1turn;
+  document.getElementById("count2").innerHTML = player2turn;
 };
 
+const whois=()=>{
+  document.getElementById("current").innerHTML = currentPlayer;
+}
 
 
-  
+// reset // reset 
+
+const reset=()=>{
+   player1turn = 3;
+   player2turn = 3; 
+  let reset = document.querySelectorAll('.yellow ')
+  reset.forEach(element=>{element.innerHTML=""})
+  count()
+}
+
+// ia 
+
+
+
+const movement = (id, row, colum) => {
+  const chipMovement = document.querySelector(id);
+  let check= comprobarPosicionGanadora()
+  let infoplayer = infoturn();
+  if (infoplayer > 0) {
+    if (
+      chipMovement.innerHTML == "" &&
+      chipMovement.innerHTML !== currentPlayer
+    ) {
+      chipMovement.innerHTML = currentPlayer;
+      tablero[row][colum] = currentPlayer;
+      comprobarPosicionGanadora()
+      if(check){
+        alert(`ganador `)
+      }
+      
+      turn();
+     
+    }
+    currentPlayer == "X" ? (currentPlayer = "O") : (currentPlayer = "X");
+  } else {
+    if (
+      chipMovement.innerHTML !== "" &&
+      chipMovement.innerHTML == currentPlayer
+    ) {
+      chipMovement.innerHTML = "";
+      turn();
+    }
+  }
+};

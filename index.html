@@ -18,13 +18,13 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <div class="container-fluid  view" id="pantalla1">
+    <div class="container-fluid none view" id="pantalla1">
       <div class="row header"></div>
       <div class="row screen justify-content-center">
         <div class="col-3 red m-1 first-box direction justify-content-center" >Player vs Player
           <div class="start" >
-            <input type="text" class="place m-1" id="player1" placeholder="player uno"  onchange="playerNames()" />
-            <input type="text" class="place m-1" id="player2" placeholder="player dos" onchange="playerNames()"/>
+            <input type="text" class="place m-1" id="player1" placeholder="name Splayer "  onchange="playerNames()" />
+            <input type="text" class="place m-1" id="player2" placeholder="name Splayer " onchange="playerNames()"/>
           </div>
           <div class="col-1">
             <button id="btn" disabled onclick="swap('pantalla4')"></button>
@@ -32,8 +32,8 @@
         </div>
         <div class="col-3 red m-1 first-box direction justify-content-center" > Player vs CPU
           <div class="start" >
-            <input type="text" class="place m-2" id="player1" placeholder="uno"  onchange="playerNames()" />
-            maquina
+            <input type="text" class="place m-2" id="player3" placeholder="name player"  onchange="playerNames()" />
+           <p id="machine" >maquina</p> 
           </div>
           <div class="col-1">
             <button id="btn" disabled onclick="swap('pantalla4')"></button>
@@ -43,7 +43,7 @@
       
     </div>
 
-    <div class="container-fluid none view" id="pantalla4">
+    <div class="container-fluid  view" id="pantalla4">
       <div class="row filling "></div>
       <div class="row header justify-content-center hola">
         <div class="col-1 m-1 player" id="host1" onclick="">
@@ -68,11 +68,11 @@
       </div>
       <div class="row justify-content-center m-1">
         <div class="col-1 m-1 bot" id="count1"></div>
-        <div class="col-1 m-1 bot" id="ganador"></div>
+        <div class="col-1 m-1 bot" id="current"  onclick=""></div>
         <div class="col-1 m-1 bot" id="count2"></div>
       </div>
       <div class="row justify-content-center">
-        <div class="col-1 bot" onclick="swap('pantalla5')"></div>
+        <div class="col-1 bot" onclick="reset()"></div>
       </div>
     </div>
 
