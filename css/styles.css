@@ -98,21 +98,31 @@ html,body{
     justify-content: center;
 }
 .winner{
-    height: 30em;
-    background-color:  rgba(255, 255, 0, 0.352);
-    width:10em ;
+    height: 10em;
+    background-color:  rgb(34, 141, 218);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.winner h1{
+    font-family: 'Anton', sans-serif;
+    color: white;
 }
 
 .new{
     height: 3em;
-    background-color: rgba(255, 255, 0, 0.352) ;
+    background-color: rgb(34, 141, 218) ;
 }
 .ceil{
     height: 5em;
 }
 
-#btn{
+.btn{
     border-radius: 50%;
     height: 2em;
     width: 2em;
+    background-color: antiquewhite;
+    border: solid black 0.1em;
 }

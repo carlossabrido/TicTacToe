@@ -18,57 +18,57 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <div class="container-fluid none view" id="pantalla1">
+    <div class="container-fluid  view" id="pantalla1">
       <div class="row header"></div>
       <div class="row screen justify-content-center">
-        <div class="col-3 red m-1 first-box direction justify-content-center" >Player vs Player
+        <div class="col-xs-2 col-md-3 red m-1 first-box direction justify-content-center" >Player vs Player
           <div class="start" >
             <input type="text" class="place m-1" id="player1" placeholder="name Splayer "  onchange="playerNames()" />
             <input type="text" class="place m-1" id="player2" placeholder="name Splayer " onchange="playerNames()"/>
           </div>
           <div class="col-1">
-            <button id="btn" disabled onclick="swap('pantalla4')"></button>
+            <button id="btn" class="btn" disabled onclick="swap('pantalla4')"></button>
           </div>
         </div>
-        <div class="col-3 red m-1 first-box direction justify-content-center" > Player vs CPU
+        <div class="col-xs-2 col-md-3 red m-1 first-box direction justify-content-center" > Player vs CPU
           <div class="start" >
             <input type="text" class="place m-2" id="player3" placeholder="name player"  onchange="playerNames()" />
            <p id="machine" >maquina</p> 
           </div>
           <div class="col-1">
-            <button id="btn" disabled onclick="swap('pantalla4')"></button>
+            <button id="btn1" class="btn" disabled onclick="swap('pantalla4')"></button>
           </div>
         </div>
       </div>
       
     </div>
 
-    <div class="container-fluid  view" id="pantalla4">
+    <div class="container-fluid none view" id="pantalla4">
       <div class="row filling "></div>
       <div class="row header justify-content-center hola">
         <div class="col-1 m-1 player" id="host1" onclick="">
         <h1></h1></div>
 
-        <div class="col-1 m-1 yellow" id="box1" onclick="movement('#box1',0,0)"></div>
-        <div class="col-1 m-1 yellow" id="box2" onclick="movement('#box2',0,1)"></div>
-        <div class="col-1 m-1 yellow" id="box3" onclick="movement('#box3',0,2)"></div>
+        <div class="col-1 m-1 yellow prueba" id="box1" onclick="movement('#box1',0,0)"></div>
+        <div class="col-1 m-1 yellow prueba" id="box2" onclick="movement('#box2',0,1)"></div>
+        <div class="col-1 m-1 yellow prueba" id="box3" onclick="movement('#box3',0,2)"></div>
 
         <div class="col-1 m-1 player" id="host2" onclick="">
         </div>
       </div>
       <div class="row header justify-content-center hola">
-        <div class="col-1 m-1 yellow" id="box4"  onclick="movement('#box4',1,0)"></div>
-        <div class="col-1 m-1 yellow" id="box5"  onclick="movement('#box5',1,1)"></div>
-        <div class="col-1 m-1 yellow" id="box6"  onclick="movement('#box6',1,2)"></div>
+        <div class="col-1 m-1 yellow prueba" id="box4"  onclick="movement('#box4',1,0)"></div>
+        <div class="col-1 m-1 yellow prueba" id="box5"  onclick="movement('#box5',1,1)"></div>
+        <div class="col-1 m-1 yellow prueba" id="box6"  onclick="movement('#box6',1,2)"></div>
       </div>
       <div class="row header justify-content-center hola  ">
-        <div class="col-1 m-1 yellow" id="box7" onclick="movement('#box7',2,0)"></div>
-        <div class="col-1 m-1 yellow" id="box8"  onclick="movement('#box8',2,1)"></div>
-        <div class="col-1 m-1 yellow" id="box9"  onclick="movement('#box9',2,2)"></div>
+        <div class="col-1 m-1 yellow prueba" id="box7" onclick="movement('#box7',2,0)"></div>
+        <div class="col-1 m-1 yellow prueba" id="box8"  onclick="movement('#box8',2,1)"></div>
+        <div class="col-1 m-1 yellow prueba" id="box9"  onclick="movement('#box9',2,2)"></div>
       </div>
       <div class="row justify-content-center m-1">
         <div class="col-1 m-1 bot" id="count1"></div>
-        <div class="col-1 m-1 bot" id="current"  onclick=""></div>
+        <div class="col-1 m-1 bot" id="current" > Player 1 start wiht X</div>
         <div class="col-1 m-1 bot" id="count2"></div>
       </div>
       <div class="row justify-content-center">
@@ -76,13 +76,15 @@
       </div>
     </div>
 
-    <div class="container-fluid view none" id="pantalla5">
+    <div class="container-fluid none view " id="winner">
       <div class="row ceil"></div>
       <div class="row justify-content-center">
-        <div class="col-3 winner"></div>
+        <div class="col-6 winner" >
+          <h1 id="winnerN"></h1>  
+        </div>
       </div>
       <div class="row justify-content-center">
-        <div class="col-1 new m-1" onclick="swap('pantalla1')"></div>
+        <div class="col-1 new m-1" onclick="swap('pantalla4')" ></div>
       </div>
     </div>
 
