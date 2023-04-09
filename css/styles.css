@@ -5,7 +5,9 @@ html,body{
     background-color: rgb(90, 91, 113);
     
 }
-
+.center{
+    justify-content: center;   
+}
 .none{
     display: none;
 }
@@ -13,6 +15,21 @@ html,body{
     height: 8em;
     
 }
+
+.direction{
+    flex-direction: column;
+}
+.blue{
+    background-color: rgb(34, 141, 218);  
+    font-family: 'Anton', sans-serif;;
+}
+
+.white{
+    color: rgb(255, 255, 255); 
+
+}
+
+/* cajas inicio  */
 .first-box{
     height: 30em;
     display: flex;
@@ -24,9 +41,6 @@ html,body{
 }
 
 
-.center{
-    justify-content: center;   
-}
 .start{
     width: 80%;
     height: 30%;
@@ -40,36 +54,17 @@ html,body{
 .place{
     width: 100%;
     display: flex;
-    justify-content: center;
-    
+    justify-content: center;   
 }
 
-#host1{
-    color:rgb(254, 254, 254) ;
-}
-#host2{
-    color:rgb(254, 254, 254) ;
-}
 
-.hola{
-    text-align: center; 
-   color: rgb(34, 141, 218); 
-    
-}
-
-.direction{
-    flex-direction: column;
-}
-.red{
-    background-color: rgb(34, 141, 218);  
-    font-family: 'Anton', sans-serif;;
-}
-.yellow{
+.square{
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.916);
     font-size: 2em;
+    color: rgb(34, 141, 218);
 }
 .player{
     display: flex;
@@ -96,6 +91,17 @@ html,body{
     font-family: 'Anton', sans-serif;
     display: flex;
     justify-content: center;
+    color: white;
+}
+
+
+.bot2{
+    height: 2em;
+    background-color: rgb(34, 141, 218) ;
+    font-family: 'Anton', sans-serif;
+    display: flex;
+    justify-content: center;
+    color: white;
 }
 .winner{
     height: 10em;
@@ -111,9 +117,14 @@ html,body{
     color: white;
 }
 
-.new{
+.lastbtn{
     height: 3em;
     background-color: rgb(34, 141, 218) ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: 'Anton', sans-serif; 
 }
 .ceil{
     height: 5em;
