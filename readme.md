@@ -1,7 +1,8 @@
 # Tic Tac Toe 
 
-Project where i´ve developed a interactive game 
+Project where i´ve developed a interactive game.
 
+link https://carlossabrido.github.io/TicTacToe/
 # Funcionality
 
 website link:
