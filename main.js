@@ -9,41 +9,36 @@ const tablero = [
 
 // cambiar de pantalla
 
-const swap = (id) => {
-  let view = document.querySelectorAll(".view");
-  let pageShow = document.getElementById(id);
+// const swap = (id) => {
+//   let view = document.querySelectorAll(".view");
+//   let pageShow = document.getElementById(id);
 
-  for (let i = 0; i < view.length; i++) {
-    view[i].classList.add("none");
-  }
-  pageShow.classList.remove("none");
-  reset()
-  reset2()
-};
+//   for (let i = 0; i < view.length; i++) {
+//     view[i].classList.add("none");
+//   }
+//   pageShow.classList.remove("none");
+//   reset()
+// }
 
-// conseguir nombres
-let nplayer1 = document.getElementById("player1").value;
-
-const playerNames = () => {
+const swap2 = () => {
   const nplayer1 = document.getElementById("player1").value;
   const nplayer2 = document.getElementById("player2").value;
-  const nplayer3 = document.getElementById("player3").value;
+  const tick = document.getElementById("check").checked;
+  console.log(tick);
 
-  if (nplayer1 == "" && nplayer2 == "") {
-    document.getElementById("btn").disabled = true;
-  } else {
-    document.getElementById("btn").disabled = false;
-  }
-  if (nplayer3 == "") {
-    document.getElementById("btn1").disabled = true;
-  } else {
-    document.getElementById("btn1").disabled = false;
+  if (nplayer1 !== "" && nplayer2 !== "") {
+    document.getElementById("host1").innerHTML = nplayer1;
+    document.getElementById("host2").innerHTML = nplayer2;
+    document.getElementById("pantalla1").classList.add("none");
+    document.getElementById("pantalla44").classList.remove("none");
   }
 
-  document.getElementById("host1").innerHTML = nplayer1;
-  document.getElementById("host2").innerHTML = nplayer2;
-  document.getElementById("host3").innerHTML = nplayer3;
-  document.getElementById("host4").innerHTML = "CPU";
+  if (nplayer1 !== "" && tick == true) {
+    document.getElementById("host1").innerHTML = nplayer1;
+    document.getElementById("host2").innerHTML = "CPU";
+    document.getElementById("pantalla1").classList.add("none");
+    document.getElementById("pantalla44").classList.remove("none");
+  }
 };
 
 const comprobarPosicionGanadora = () => {
@@ -80,41 +75,85 @@ const comprobarPosicionGanadora = () => {
   return null;
 };
 
+
+const resete = () => {
+  window.location.reload();
+};
+
 // poner y bloquear ficha
 
 const movement = (id, row, colum) => {
+  const tick = document.getElementById("check").checked;
   const nplayer1 = document.getElementById("player1").value;
-  const nplayer2 = document.getElementById("player2").value;
   const chipMovement = document.querySelector(id);
   let infoplayer = infoturn();
-  if (infoplayer > 0) {
-    if (
-      chipMovement.innerHTML == "" &&
-      chipMovement.innerHTML !== currentPlayer
-    ) {
-      chipMovement.innerHTML = currentPlayer;
-      tablero[row][colum] = currentPlayer;
-      let comp = comprobarPosicionGanadora();
-      if (comp == "X" || comp == "O") {
-        document.getElementById("winner").classList.remove("none");
-        document.getElementById("pantalla4").classList.add("none");
-        if (comp == "X") {
-          document.getElementById("winnerN").innerHTML = `${nplayer1} wins!!`;
-        } else {
-          document.getElementById("winnerN").innerHTML = `${nplayer2} wins!!`;
+  if (tick == false) {
+    if (infoplayer > 0) {
+      if (
+        chipMovement.innerHTML == "" &&
+        chipMovement.innerHTML !== currentPlayer
+      ) {
+        chipMovement.innerHTML = currentPlayer;
+        tablero[row][colum] = currentPlayer;
+        let comp = comprobarPosicionGanadora();
+        if (comp == "X" || comp == "O") {
+          document.getElementById("winner").classList.remove("none");
+          document.getElementById("pantalla44").classList.add("none");
+          if (comp == "X") {
+            const nplayer1 = document.getElementById("player1").value;
+            document.getElementById("winnerN").innerHTML = `${nplayer1} wins!!`;
+          } else {
+            const nplayer2 = document.getElementById("player2").value;
+            document.getElementById("winnerN").innerHTML = `${nplayer2} wins!!`;
+          }
         }
-      }
 
-      turn();
+        turn();
+      }
+      currentPlayer = currentPlayer == "X" ? "O" : "X";
+      console.log(currentPlayer);
+    } else {
+      if (
+        chipMovement.innerHTML !== "" &&
+        chipMovement.innerHTML == currentPlayer
+      ) {
+        chipMovement.innerHTML = "";
+        turn();
+      }
     }
-    currentPlayer = currentPlayer == "X" ? "O" : "X";
   } else {
-    if (
-      chipMovement.innerHTML !== "" &&
-      chipMovement.innerHTML == currentPlayer
-    ) {
-      chipMovement.innerHTML = "";
-      turn();
+    let infoplayer = infoturn();
+    if (infoplayer > 0) {
+      if (
+        chipMovement.innerHTML == "" &&
+        chipMovement.innerHTML !== currentPlayer
+      ) {
+        chipMovement.innerHTML = currentPlayer;
+        tablero[row][colum] = currentPlayer;
+        generateRandomPosition();
+        let check = comprobarPosicionGanadora();
+        if (check == "X" || check == "O") {
+          document.getElementById("winner").classList.remove("none");
+          document.getElementById("pantalla44").classList.add("none");
+          if (check == "X") {
+            document.getElementById("winnerN").innerHTML = `${nplayer1} wins!!`;
+          } else {
+            document.getElementById("winnerN").innerHTML = `CPU wins!!`;
+          }
+        }
+
+        // comprobarPosicionGanadora()
+        turn();
+      }
+    } else {
+      if (
+        chipMovement.innerHTML !== "" &&
+        chipMovement.innerHTML == currentPlayer
+      ) {
+        chipMovement.innerHTML = "";
+        tablero[row][colum] = "";
+        turn();
+      }
     }
   }
 };
@@ -154,13 +193,10 @@ const infoturn = () => {
 const count = () => {
   document.getElementById("count1").innerHTML = player1turn;
   document.getElementById("count2").innerHTML = player2turn;
-  document.getElementById("count3").innerHTML = player1turn;
-  document.getElementById("count4").innerHTML = player2turn;
 };
 
 const whois = () => {
   document.getElementById("current").innerHTML = currentPlayer;
-  document.getElementById("current2").innerHTML = currentPlayer;
 };
 
 // reset //
@@ -180,99 +216,67 @@ const reset = () => {
   count();
 };
 
-// reset ia 
-const reset2 = () => {
-  player1turn = 3;
-  player2turn = 3;
-  let reset = document.querySelectorAll(".prueba2");
-  reset.forEach((element) => {
-    element.innerHTML = "";
-  });
-  for (let i = 0; i < tablero.length; i++) {
-    for (let j = 0; j < tablero.length; j++) {
-      tablero[i][j] = "";
-    }
-  }
-  count();
-};
 
-// ia
-
-const movementia = (id, row, colum) => {
-  const chipMovement = document.querySelector(id);
-  const nplayer3 = document.getElementById("player3").value;
-  let infoplayer = infoturn();
-  if (infoplayer > 0) {
-    if (
-      chipMovement.innerHTML == "" &&
-      chipMovement.innerHTML !== currentPlayer
-    ) {
-      chipMovement.innerHTML = currentPlayer;
-      tablero[row][colum] = currentPlayer;
-      let check = comprobarPosicionGanadora();
-      if (check == "X" || check == "O") {
-        document.getElementById("winner").classList.remove("none");
-        document.getElementById("pantalla6").classList.add("none");
-        if (check == "X") {
-          document.getElementById("winnerN").innerHTML = `${nplayer3} wins!!`;
-        } else {
-          document.getElementById("winnerN").innerHTML = `CPU wins!!`;
-        }
-      }
-      generateRandomPosition();
-      turn();
-    }
-  } else {
-    if (
-      chipMovement.innerHTML !== "" &&
-      chipMovement.innerHTML == currentPlayer
-    ) {
-      chipMovement.innerHTML = "";
-      turn();
-    }
-  }
-};
-
-const generateRandomPosition = () => {
+const generateRandomPosition = (exclude) => {
   if (player2turn > 0) {
-    const chipMovement = document.querySelectorAll(".prueba2");
-    const na = [];
+    const chipMovement = document.querySelectorAll(".prueba");
+    const arraySquares = [];
     let row, col;
+
     for (let i = 0; i < chipMovement.length; i++) {
-      na.push(chipMovement[i]);
+      arraySquares.push(chipMovement[i]);
     }
+    // mete los divs que conforman el tabler a un array 
+
+  
     let twoDimensionalArr = [];
     for (let i = 0; i < 3; i++) {
-      twoDimensionalArr.push(na.slice(i * 3, (i + 1) * 3));
+      twoDimensionalArr.push(arraySquares.slice(i * 3, (i + 1) * 3));
     }
-    do {
-      row = Math.floor(Math.random() * 3);
-      col = Math.floor(Math.random() * 3);
-    } while (tablero[row][col] !== "");
+
+    if (exclude) {
+      do {
+        row = Math.floor(Math.random() * 3);
+        col = Math.floor(Math.random() * 3);
+      } while (
+        tablero[row][col] !== "" ||
+        (row == exclude[0] && col == exclude[1])
+        //  evitar poner en la misma posición de la fila y la columna
+      );
+    } else {
+      do {
+        row = Math.floor(Math.random() * 3);
+        col = Math.floor(Math.random() * 3);
+      } while (tablero[row][col] !== "");
+    }
     tablero[row][col] = "O";
+
     twoDimensionalArr[row][col].innerHTML = "O";
     player2turn--;
   } else {
-    const chipMovement = document.querySelectorAll(".prueba2");
-    const na = [];
+    const chipMovement = document.querySelectorAll(".prueba");
+    const arraySquares = [];
     let row, col;
     for (let i = 0; i < chipMovement.length; i++) {
-      na.push(chipMovement[i]);
+      arraySquares.push(chipMovement[i]);
     }
 
     let twoDimensionalArr = [];
     for (let i = 0; i < 3; i++) {
-      twoDimensionalArr.push(na.slice(i * 3, (i + 1) * 3));
+      twoDimensionalArr.push(arraySquares.slice(i * 3, (i + 1) * 3));
     }
-    console.log(twoDimensionalArr);
+
     do {
       row = Math.floor(Math.random() * 3);
       col = Math.floor(Math.random() * 3);
     } while (tablero[row][col] !== "O");
     tablero[row][col] = "";
+
     twoDimensionalArr[row][col].innerHTML = "";
     player2turn++;
 
-    generateRandomPosition();
+    let exclude = [row, col];
+    // exclude es un array que contiene las posiciones del tablero de la ficha que se acaba de quitar
+    generateRandomPosition(exclude);
   }
 };

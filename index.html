@@ -1,134 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
-      crossorigin="anonymous"
-      
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
-    <div class="container-fluid  view" id="pantalla1">
-      <div class="row header"></div>
-      <div class="row screen justify-content-center">
-        <div class="col-xs-2 col-md-3 blue m-1 first-box direction justify-content-center" >Player vs Player
-          <div class="start" >
-            <input type="text" class="place m-1" id="player1" placeholder="name player "  onchange="playerNames()" />
-            <input type="text" class="place m-1" id="player2" placeholder="name player " onchange="playerNames()"/>
-          </div>
-          <div class="col-1">
-            <button id="btn" class="btn" disabled onclick="swap('pantalla4')"></button>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous" <link
+    rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <div class="container-fluid  view" id="pantalla1">
+    <div class="row header"></div>
+    <div class="row screen justify-content-center">
+      <div class="col-xs-2 col-md-3 blue m-1 first-box direction justify-content-center">
+        Player vs Player
+        <div class="start">
+          <input type="text" class="place m-1" id="player1" placeholder="name player " />
+          <input type="text" class="place m-1" id="player2" placeholder="name player " />
+          <input type="checkbox" name="" id="check">cpu
         </div>
-        <div class="col-xs-2 col-md-3 blue m-1 first-box direction justify-content-center" > Player vs CPU
-          <div class="start" >
-            <input type="text" class="place m-2" id="player3" placeholder="name player"  onchange="playerNames()" />
-           <p id="machine" >maquina</p> 
-          </div>
-          <div class="col-1">
-            <button id="btn1" class="btn" disabled onclick="swap('pantalla6')"></button>
-          </div>
+        <div class="col-1">
+          <button id="btn" class="btn"  onclick="swap2()"></button>
         </div>
       </div>
-      
+  </div>
+  </div>
+  
+
+
+  <!-- regular table -->
+
+  <div class="container-fluid none view" id="pantalla44">
+    <div class="row filling"></div>
+    <div class="row header justify-content-center white">
+      <div class="col-1 m-1 player white" id="host1" onclick="">
+        <h1></h1>
+      </div>
+
+      <div class="col-1 m-1 square prueba" id="box1" onclick="movement('#box1',0,0)"></div>
+      <div class="col-1 m-1 square prueba" id="box2" onclick="movement('#box2',0,1)"></div>
+      <div class="col-1 m-1 square prueba" id="box3" onclick="movement('#box3',0,2)"></div>
+
+      <div class="col-1 m-1 player white" id="host2" onclick=""></div>
     </div>
-
-    <!-- regular table -->
-
-    <div class="container-fluid none view" id="pantalla4">
-      <div class="row filling "></div>
-      <div class="row header justify-content-center white">
-        <div class="col-1 m-1 player white" id="host1" onclick="">
-        <h1></h1></div>
-
-        <div class="col-1 m-1 square prueba" id="box1" onclick="movement('#box1',0,0)"></div>
-        <div class="col-1 m-1 square prueba" id="box2" onclick="movement('#box2',0,1)"></div>
-        <div class="col-1 m-1 square prueba" id="box3" onclick="movement('#box3',0,2)"></div>
-
-        <div class="col-1 m-1 player white" id="host2" onclick="">
-        </div>
-      </div>
-      <div class="row header justify-content-center white">
-        <div class="col-1 m-1 square prueba" id="box4"  onclick="movement('#box4',1,0)"></div>
-        <div class="col-1 m-1 square prueba" id="box5"  onclick="movement('#box5',1,1)"></div>
-        <div class="col-1 m-1 square prueba" id="box6"  onclick="movement('#box6',1,2)"></div>
-      </div>
-      <div class="row header justify-content-center white  ">
-        <div class="col-1 m-1 square prueba" id="box7" onclick="movement('#box7',2,0)"></div>
-        <div class="col-1 m-1 square prueba" id="box8"  onclick="movement('#box8',2,1)"></div>
-        <div class="col-1 m-1 square prueba" id="box9"  onclick="movement('#box9',2,2)"></div>
-      </div>
-      <div class="row justify-content-center m-1">
-        <div class="col-1 m-1 bot" id="count1"></div>
-        <div class="col-2 m-1 bot2" id="current" > Player 1 start wiht X</div>
-        <div class="col-1 m-1 bot" id="count2"></div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-1 bot " onclick="reset()"> reset</div>
-      </div>
+    <div class="row header justify-content-center white">
+      <div class="col-1 m-1 square prueba" id="box4" onclick="movement('#box4',1,0)"></div>
+      <div class="col-1 m-1 square prueba" id="box5" onclick="movement('#box5',1,1)"></div>
+      <div class="col-1 m-1 square prueba" id="box6" onclick="movement('#box6',1,2)"></div>
     </div>
-
-    <!-- ia table  -->
-
-
-    <div class="container-fluid none view" id="pantalla6">
-      <div class="row filling "></div>
-      <div class="row header justify-content-center white">
-        <div class="col-1 m-1 player" id="host3" onclick="">
-        <h1></h1></div>
-
-        <div class="col-1 m-1 square prueba2" id="box10" onclick="movementia('#box10',0,0)"></div>
-        <div class="col-1 m-1 square prueba2" id="box12" onclick="movementia('#box12',0,1)"></div>
-        <div class="col-1 m-1 square prueba2" id="box13" onclick="movementia('#box13',0,2)"></div>
-
-        <div class="col-1 m-1 player" id="host4" onclick="">
-        </div>
-      </div>
-      <div class="row header justify-content-center white">
-        <div class="col-1 m-1 square prueba2" id="box14"  onclick="movementia('#box14',1,0)"></div>
-        <div class="col-1 m-1 square prueba2" id="box15"  onclick="movementia('#box15',1,1)"></div>
-        <div class="col-1 m-1 square prueba2" id="box16"  onclick="movementia('#box16',1,2)"></div>
-      </div>
-      <div class="row header justify-content-center white ">
-        <div class="col-1 m-1 square prueba2" id="box17" onclick="movementia('#box17',2,0)"></div>
-        <div class="col-1 m-1 square prueba2" id="box18"  onclick="movementia('#box18',2,1)"></div>
-        <div class="col-1 m-1 square prueba2" id="box19"  onclick="movementia('#box19',2,2)"></div>
-      </div>
-      <div class="row justify-content-center m-1">
-        <div class="col-1 m-1 bot" id="count3"></div>
-        <div class="col-2 m-1 bot2" id="current2" > Player 1 start wiht X</div>
-        <div class="col-1 m-1 bot" id="count4"></div>
-      </div>
-      
+    <div class="row header justify-content-center white">
+      <div class="col-1 m-1 square prueba" id="box7" onclick="movement('#box7',2,0)"></div>
+      <div class="col-1 m-1 square prueba" id="box8" onclick="movement('#box8',2,1)"></div>
+      <div class="col-1 m-1 square prueba" id="box9" onclick="movement('#box9',2,2)"></div>
     </div>
+    <div class="row justify-content-center m-1">
+      <div class="col-1 m-1 bot" id="count1"></div>
+      <div class="col-2 m-1 bot2" id="current">Player 1 start wiht X</div>
+      <div class="col-1 m-1 bot" id="count2"></div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-1 bot" onclick="">reset</div>
+    </div>
+  </div>
 
-    <div class="container-fluid none view " id="winner">
-      <div class="row ceil"></div>
-      <div class="row justify-content-center">
-        <div class="col-6 winner" >
-          <h1 id="winnerN"></h1>  
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-1 m-1 lastbtn white justify-content-center" onclick="swap('pantalla1')" >play again</div>
+  <div class="container-fluid none view" id="winner">
+    <div class="row ceil"></div>
+    <div class="row justify-content-center">
+      <div class="col-6 winner">
+        <h1 id="winnerN"></h1>
       </div>
     </div>
+    <div class="row justify-content-center">
+      <div class="col-1 m-1 lastbtn white justify-content-center" onclick="resete()">
+        play again
+      </div>
+    </div>
+  </div>
 
-    <script src="main.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+  <script src="main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
