@@ -158,7 +158,7 @@ const movement = (id, row, colum) => {
   }
 };
 
-// turnos
+
 let player1turn = 3;
 let player2turn = 3;
 const turn = () => {
@@ -189,12 +189,13 @@ const infoturn = () => {
     return player2turn;
   }
 };
-
+//  muestra los turnos 
 const count = () => {
   document.getElementById("count1").innerHTML = player1turn;
   document.getElementById("count2").innerHTML = player2turn;
 };
 
+// muestra quien esta jugando 
 const whois = () => {
   document.getElementById("current").innerHTML = currentPlayer;
 };
@@ -222,13 +223,15 @@ const generateRandomPosition = (exclude) => {
     const chipMovement = document.querySelectorAll(".prueba");
     const arraySquares = [];
     let row, col;
+    // mete los divs que conforman el tablero a un array 
+
 
     for (let i = 0; i < chipMovement.length; i++) {
       arraySquares.push(chipMovement[i]);
     }
-    // mete los divs que conforman el tabler a un array 
-
+    
   
+    // transorma el array anterior a uno de 2 dimensiones como el tablero 
     let twoDimensionalArr = [];
     for (let i = 0; i < 3; i++) {
       twoDimensionalArr.push(arraySquares.slice(i * 3, (i + 1) * 3));
