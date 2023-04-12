@@ -142,8 +142,9 @@ const movement = (id, row, colum) => {
           }
         }
 
-        // comprobarPosicionGanadora()
+        
         turn();
+        comprobarPosicionGanadora()
       }
     } else {
       if (

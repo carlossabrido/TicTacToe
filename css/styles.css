@@ -132,8 +132,11 @@ html,body{
 
 .btn{
     border-radius: 50%;
-    height: 2em;
-    width: 2em;
+    height: 3em;
+    width: 3em;
     background-color: antiquewhite;
     border: solid black 0.1em;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
