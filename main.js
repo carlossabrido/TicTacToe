@@ -24,7 +24,6 @@ const swap2 = () => {
   const nplayer1 = document.getElementById("player1").value;
   const nplayer2 = document.getElementById("player2").value;
   const tick = document.getElementById("check").checked;
-  console.log(tick);
 
   if (nplayer1 !== "" && nplayer2 !== "") {
     document.getElementById("host1").innerHTML = nplayer1;
@@ -48,7 +47,7 @@ const comprobarPosicionGanadora = () => {
       tablero[i][0] === tablero[i][1] &&
       tablero[i][0] === tablero[i][2]
     )
-      return tablero[i[0]];
+      return tablero[i][0];
     // horizontales
     if (
       tablero[0][i] &&
@@ -75,7 +74,6 @@ const comprobarPosicionGanadora = () => {
   return null;
 };
 
-
 const resete = () => {
   window.location.reload();
 };
@@ -96,7 +94,7 @@ const movement = (id, row, colum) => {
         chipMovement.innerHTML = currentPlayer;
         tablero[row][colum] = currentPlayer;
         let comp = comprobarPosicionGanadora();
-        if (comp == "X" || comp == "O") {
+        if (comp) {
           document.getElementById("winner").classList.remove("none");
           document.getElementById("pantalla44").classList.add("none");
           if (comp == "X") {
@@ -111,26 +109,28 @@ const movement = (id, row, colum) => {
         turn();
       }
       currentPlayer = currentPlayer == "X" ? "O" : "X";
-      console.log(currentPlayer);
+
+      // quitar fichas
     } else {
       if (
         chipMovement.innerHTML !== "" &&
         chipMovement.innerHTML == currentPlayer
       ) {
         chipMovement.innerHTML = "";
+        tablero[row][colum] = "";
         turn();
       }
     }
+
+
   } else {
     let infoplayer = infoturn();
     if (infoplayer > 0) {
-      if (
-        chipMovement.innerHTML == "" &&
-        chipMovement.innerHTML !== currentPlayer
+      if (chipMovement.innerHTML == "" && chipMovement.innerHTML !== currentPlayer
       ) {
         chipMovement.innerHTML = currentPlayer;
         tablero[row][colum] = currentPlayer;
-        generateRandomPosition();
+        comprobarPosicionGanadora();
         let check = comprobarPosicionGanadora();
         if (check == "X" || check == "O") {
           document.getElementById("winner").classList.remove("none");
@@ -142,9 +142,19 @@ const movement = (id, row, colum) => {
           }
         }
 
-        
+        generateRandomPosition();
+        check = comprobarPosicionGanadora();
+        if (check == "X" || check == "O") {
+          document.getElementById("winner").classList.remove("none");
+          document.getElementById("pantalla44").classList.add("none");
+          if (check == "X") {
+            document.getElementById("winnerN").innerHTML = `${nplayer1} wins!!`;
+          } else {
+            document.getElementById("winnerN").innerHTML = `CPU wins!!`;
+          }
+        }
+
         turn();
-        comprobarPosicionGanadora()
       }
     } else {
       if (
@@ -158,7 +168,6 @@ const movement = (id, row, colum) => {
     }
   }
 };
-
 
 let player1turn = 3;
 let player2turn = 3;
@@ -190,13 +199,13 @@ const infoturn = () => {
     return player2turn;
   }
 };
-//  muestra los turnos 
+//  muestra los turnos
 const count = () => {
   document.getElementById("count1").innerHTML = player1turn;
   document.getElementById("count2").innerHTML = player2turn;
 };
 
-// muestra quien esta jugando 
+// muestra quien esta jugando
 const whois = () => {
   document.getElementById("current").innerHTML = currentPlayer;
 };
@@ -218,31 +227,28 @@ const reset = () => {
   count();
 };
 
-
 const generateRandomPosition = (exclude) => {
   if (player2turn > 0) {
     const chipMovement = document.querySelectorAll(".prueba");
     const arraySquares = [];
     let row, col;
-    // mete los divs que conforman el tablero a un array 
-
-
+    // mete los divs que conforman el tablero a un array
     for (let i = 0; i < chipMovement.length; i++) {
       arraySquares.push(chipMovement[i]);
     }
-    
-  
-    // transorma el array anterior a uno de 2 dimensiones como el tablero 
+
+    // transorma el array anterior a uno de 2 dimensiones como el tablero
     let twoDimensionalArr = [];
     for (let i = 0; i < 3; i++) {
       twoDimensionalArr.push(arraySquares.slice(i * 3, (i + 1) * 3));
     }
-
+    // comprueba  si se ha quitado alguna ficha
     if (exclude) {
       do {
         row = Math.floor(Math.random() * 3);
         col = Math.floor(Math.random() * 3);
-      } while (
+        // me busca una posicion vacía y que no sea la anterior 
+      } while ( 
         tablero[row][col] !== "" ||
         (row == exclude[0] && col == exclude[1])
         //  evitar poner en la misma posición de la fila y la columna
@@ -253,10 +259,15 @@ const generateRandomPosition = (exclude) => {
         col = Math.floor(Math.random() * 3);
       } while (tablero[row][col] !== "");
     }
+    
+    // me la añade a mi array original y luego la pinta
     tablero[row][col] = "O";
-
     twoDimensionalArr[row][col].innerHTML = "O";
     player2turn--;
+
+
+
+    // vacia
   } else {
     const chipMovement = document.querySelectorAll(".prueba");
     const arraySquares = [];
@@ -270,12 +281,16 @@ const generateRandomPosition = (exclude) => {
       twoDimensionalArr.push(arraySquares.slice(i * 3, (i + 1) * 3));
     }
 
-    do {
+    // genera una posicion aleatoria comprueba que sea distinta de 0 y cuando la posicion  es diferemte de 0
+    // genera otra posicion aleatoria que debe ser 0 y la vacia
+
+    row = Math.floor(Math.random() * 3);
+    col = Math.floor(Math.random() * 3);
+    while (tablero[row][col] !== "O") {
       row = Math.floor(Math.random() * 3);
       col = Math.floor(Math.random() * 3);
-    } while (tablero[row][col] !== "O");
+    }
     tablero[row][col] = "";
-
     twoDimensionalArr[row][col].innerHTML = "";
     player2turn++;
 

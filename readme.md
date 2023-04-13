@@ -9,7 +9,7 @@ website link:
 
 Loggin page, set your name player to start to play against other friend o against CPU
 
-![ejemplo1](img/primera.png)
+![ejemplo1](img/portada%20.png)
 
 Now, we are in the main page where we are gonig to develop all the action, get ready and give your best to beat your opponent
 
