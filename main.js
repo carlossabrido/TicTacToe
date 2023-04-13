@@ -78,7 +78,7 @@ const resete = () => {
   window.location.reload();
 };
 
-// poner y bloquear ficha
+// place chips
 
 const movement = (id, row, colum) => {
   const tick = document.getElementById("check").checked;
@@ -110,7 +110,7 @@ const movement = (id, row, colum) => {
       }
       currentPlayer = currentPlayer == "X" ? "O" : "X";
 
-      // quitar fichas
+      // remove chip
     } else {
       if (
         chipMovement.innerHTML !== "" &&
@@ -122,11 +122,13 @@ const movement = (id, row, colum) => {
       }
     }
 
-
+    // ia
   } else {
     let infoplayer = infoturn();
     if (infoplayer > 0) {
-      if (chipMovement.innerHTML == "" && chipMovement.innerHTML !== currentPlayer
+      if (
+        chipMovement.innerHTML == "" &&
+        chipMovement.innerHTML !== currentPlayer
       ) {
         chipMovement.innerHTML = currentPlayer;
         tablero[row][colum] = currentPlayer;
@@ -189,7 +191,7 @@ const turn = () => {
   count();
 };
 
-// dime los turnos
+// who is playing
 
 const infoturn = () => {
   whois();
@@ -199,59 +201,43 @@ const infoturn = () => {
     return player2turn;
   }
 };
-//  muestra los turnos
+//  show turns
 const count = () => {
   document.getElementById("count1").innerHTML = player1turn;
   document.getElementById("count2").innerHTML = player2turn;
 };
 
-// muestra quien esta jugando
+// show who is playing
 const whois = () => {
   document.getElementById("current").innerHTML = currentPlayer;
 };
 
-// reset //
-
-const reset = () => {
-  player1turn = 3;
-  player2turn = 3;
-  let reset = document.querySelectorAll(".prueba");
-  reset.forEach((element) => {
-    element.innerHTML = "";
-  });
-  for (let i = 0; i < tablero.length; i++) {
-    for (let j = 0; j < tablero.length; j++) {
-      tablero[i][j] = "";
-    }
-  }
-  count();
-};
 
 const generateRandomPosition = (exclude) => {
   if (player2turn > 0) {
     const chipMovement = document.querySelectorAll(".prueba");
     const arraySquares = [];
     let row, col;
-    // mete los divs que conforman el tablero a un array
+    // put all the squares of the table into an array
     for (let i = 0; i < chipMovement.length; i++) {
       arraySquares.push(chipMovement[i]);
     }
 
-    // transorma el array anterior a uno de 2 dimensiones como el tablero
+    // transorm the array of before in a bidimensional one
     let twoDimensionalArr = [];
     for (let i = 0; i < 3; i++) {
       twoDimensionalArr.push(arraySquares.slice(i * 3, (i + 1) * 3));
     }
-    // comprueba  si se ha quitado alguna ficha
+    // cheks if any chips have been removed
     if (exclude) {
       do {
         row = Math.floor(Math.random() * 3);
         col = Math.floor(Math.random() * 3);
-        // me busca una posicion vacía y que no sea la anterior 
-      } while ( 
+        //  seek a empty possition diffeerent of the one of before
+      } while (
         tablero[row][col] !== "" ||
         (row == exclude[0] && col == exclude[1])
-        //  evitar poner en la misma posición de la fila y la columna
+        //  avoid place a chip in the same row and col
       );
     } else {
       do {
@@ -259,15 +245,12 @@ const generateRandomPosition = (exclude) => {
         col = Math.floor(Math.random() * 3);
       } while (tablero[row][col] !== "");
     }
-    
-    // me la añade a mi array original y luego la pinta
+    // add o to the array
     tablero[row][col] = "O";
     twoDimensionalArr[row][col].innerHTML = "O";
     player2turn--;
 
-
-
-    // vacia
+    // empty
   } else {
     const chipMovement = document.querySelectorAll(".prueba");
     const arraySquares = [];
@@ -281,14 +264,14 @@ const generateRandomPosition = (exclude) => {
       twoDimensionalArr.push(arraySquares.slice(i * 3, (i + 1) * 3));
     }
 
-    // genera una posicion aleatoria comprueba que sea distinta de 0 y cuando la posicion  es diferemte de 0
-    // genera otra posicion aleatoria que debe ser 0 y la vacia
+    // generate a rmdom possition and cheks if it is different of"0"
+    //it continue generating until it find a 0possition and get it empty
 
     row = Math.floor(Math.random() * 3);
     col = Math.floor(Math.random() * 3);
     while (tablero[row][col] !== "O") {
-      row = Math.floor(Math.random() * 3);
-      col = Math.floor(Math.random() * 3);
+    row = Math.floor(Math.random() * 3);
+    col = Math.floor(Math.random() * 3);
     }
     tablero[row][col] = "";
     twoDimensionalArr[row][col].innerHTML = "";
