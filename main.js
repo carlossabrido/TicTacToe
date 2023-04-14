@@ -212,7 +212,6 @@ const whois = () => {
   document.getElementById("current").innerHTML = currentPlayer;
 };
 
-
 const generateRandomPosition = (exclude) => {
   if (player2turn > 0) {
     const chipMovement = document.querySelectorAll(".prueba");
@@ -266,13 +265,11 @@ const generateRandomPosition = (exclude) => {
 
     // generate a rmdom possition and cheks if it is different of"0"
     //it continue generating until it find a 0possition and get it empty
+    do {
+      row = Math.floor(Math.random() * 3);
+      col = Math.floor(Math.random() * 3);
+    } while (tablero[row][col] !== "O");
 
-    row = Math.floor(Math.random() * 3);
-    col = Math.floor(Math.random() * 3);
-    while (tablero[row][col] !== "O") {
-    row = Math.floor(Math.random() * 3);
-    col = Math.floor(Math.random() * 3);
-    }
     tablero[row][col] = "";
     twoDimensionalArr[row][col].innerHTML = "";
     player2turn++;
