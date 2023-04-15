@@ -9,16 +9,16 @@ const tablero = [
 
 // cambiar de pantalla
 
-// const swap = (id) => {
-//   let view = document.querySelectorAll(".view");
-//   let pageShow = document.getElementById(id);
+const swap = (id) => {
+  let view = document.querySelectorAll(".view");
+  let pageShow = document.getElementById(id);
 
-//   for (let i = 0; i < view.length; i++) {
-//     view[i].classList.add("none");
-//   }
-//   pageShow.classList.remove("none");
-//   reset()
-// }
+  for (let i = 0; i < view.length; i++) {
+    view[i].classList.add("none");
+  }
+  pageShow.classList.remove("none");
+  reset()
+}
 
 const swap2 = () => {
   const nplayer1 = document.getElementById("player1").value;
