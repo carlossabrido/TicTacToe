@@ -74,9 +74,31 @@ const comprobarPosicionGanadora = () => {
   return null;
 };
 
-const resete = () => {
-  window.location.reload();
-};
+
+
+const empty=()=>{
+  document.getElementById("player1").value=""
+  document.getElementById("player2").value=""
+  
+ }
+
+  const reset = () => {
+    player1turn = 3;
+    player2turn = 3;
+    console.log("reset")
+
+    let reset = document.querySelectorAll(".prueba");
+    reset.forEach((element) => {
+      element.innerHTML = "";
+    });
+    for(let i=0;i < tablero.length; i++){
+      for(let j=0;j < tablero.length; j++){
+        tablero[i][j]=""
+      }
+    }
+    empty()
+    count();
+  };
 
 // place chips
 
@@ -105,11 +127,14 @@ const movement = (id, row, colum) => {
             document.getElementById("winnerN").innerHTML = `${nplayer2} wins!!`;
           }
         }
+        
 
         turn();
-      }
-      currentPlayer = currentPlayer == "X" ? "O" : "X";
+        currentPlayer = currentPlayer == "X" ? "O" : "X";
 
+
+      }
+      
       // remove chip
     } else {
       if (
