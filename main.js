@@ -85,6 +85,7 @@ const empty=()=>{
   const reset = () => {
     player1turn = 3;
     player2turn = 3;
+    currentPlayer="X"
     console.log("reset")
 
     let reset = document.querySelectorAll(".prueba");
