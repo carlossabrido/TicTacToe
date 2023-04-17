@@ -275,7 +275,7 @@ const generateRandomPosition = (exclude) => {
     twoDimensionalArr[row][col].innerHTML = "O";
     player2turn--;
 
-    // empty
+    // remove
   } else {
     const chipMovement = document.querySelectorAll(".prueba");
     const arraySquares = [];
@@ -289,8 +289,7 @@ const generateRandomPosition = (exclude) => {
       twoDimensionalArr.push(arraySquares.slice(i * 3, (i + 1) * 3));
     }
 
-    // generate a rmdom possition and cheks if it is different of"0"
-    //it continue generating until it find a 0possition and get it empty
+    
     do {
       row = Math.floor(Math.random() * 3);
       col = Math.floor(Math.random() * 3);
@@ -301,7 +300,7 @@ const generateRandomPosition = (exclude) => {
     player2turn++;
 
     let exclude = [row, col];
-    // exclude es un array que contiene las posiciones del tablero de la ficha que se acaba de quitar
+    // array which contains the position of the table that has been removed
     generateRandomPosition(exclude);
   }
 };
